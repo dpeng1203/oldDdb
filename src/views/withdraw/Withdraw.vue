@@ -135,14 +135,22 @@ export default {
             })
         },
         submit () {
+            if(!this.money) {
+                Toast('请输入提现金额！')
+                return
+            }
+            if(!this.user.aTakeAccount) {
+                Toast('请输入提现账号！')
+                return
+            }
+            let restMoney = Number(this.bounsAcct.bcAbleTakeAmount) - Number(this.money)
+            if (restMoney < 0) {
+                return Toast.fail('金额不能超可提现金额!')
+            }
             let params = {
                 takeAmount: this.money
             }
-            let restMoney = this.bounsAcct.bcAbleTakeAmount - this.money
-            if (restMoney < 0) {
-                return Toast.fail('金额不能超可提现金额')
-            }
-            this.bounsAcct.bcAbleTakeAmount = restMoney
+            // this.bounsAcct.bcAbleTakeAmount = restMoney
             api.takeCash(params).then(res => {
                 Toast.success('提现申请成功')
                 this.money = ''
