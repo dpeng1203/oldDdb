@@ -82,6 +82,7 @@ import order from './../assets/img/home_cont_6.png'
 import macPriceIcon from './../assets/img/home_cont_7.png'
 import setting from './../assets/img/home_cont_9.png'
 import rechargeMoney from './../assets/img/home_cont_12.png'
+import orderManage from './../assets/img/order_manage.png'
 
 export default {
     name: 'home',
@@ -107,7 +108,8 @@ export default {
                 { imgSrc: agentUpIcon, title: '升级运营', to: { name: 'agentUp' }, show: this.isInArray([5], this.member.aType) },
                 { imgSrc: promIcon, title: '授权码', to: { name: 'sendProm' }, show: this.isInArray([1], this.member.aType) },
                 { imgSrc: rechargeMoney, title: '充值', to: { name: 'recharge' }, show: this.isInArray([1], this.member.roleType) },
-                { imgSrc: setting, title: '设置', to: { name: 'setting' }, show: this.isInArray([1, 2, 3, 4,5], this.member.aType) }
+                { imgSrc: setting, title: '设置', to: { name: 'setting' }, show: this.isInArray([1, 2, 3, 4,5], this.member.aType) },
+                { imgSrc: orderManage, title: '订单管理', to: { name: 'orderManage' }, show: this.isInArray([1, 2, 3, 4,5], this.member.aType) }
             ]
         },
         fileMsgListCom() {

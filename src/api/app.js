@@ -352,5 +352,46 @@ export default {
             price
         }
         return fetchPost(url, data)
-    }
+    },
+    //商家订单管理
+    manageOrderList ({ prdStatus,pageNum,pageSize } = {}) {
+        let url = '/zqxry/bizqry/service'
+        const data = {
+            opType: 239,
+            xry_token_id: window.localStorage.agentToken,
+            pageNum,
+            pageSize,
+            prdStatus
+        }
+        return fetchPost(url, data)
+    },
+    //微信签名
+    sign ({ url } = {}) {
+        let baseUrl = '/ddbxry/ddbWx/jsSign'
+        const data = {
+            url
+        }
+        return fetchPost(baseUrl, data)
+    },
+    // 获取快递公司code
+    edCode () {
+        let url = '/zqxry/bizqry/service'
+        const data = {
+            opType: 238,
+            xry_token_id: window.localStorage.agentToken
+        }
+        return fetchPost(url, data)
+    },
+    // 商家发货
+    edSend ({ pbCode,daExCode,edCode } = {}) {
+        let url = '/zqxry/bizedt/service'
+        const data = {
+            opType: 131,
+            xry_token_id: window.localStorage.agentToken,
+            pbCode,
+            daExCode,
+            edCode
+        }
+        return fetchPost(url, data)
+    },
 }

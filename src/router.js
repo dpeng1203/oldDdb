@@ -279,6 +279,18 @@ export default new Router({
             name: 'myDeal',
             meta: { title: '我的协议' },
             component: () => import('./views/register/myDeal.vue')
+        },
+        {
+            path: '/orderManage',
+            name: 'orderManage',
+            meta: { title: '订单列表' },
+            component: () => import('./views/orderManage/orderManage.vue')
+        },
+        {
+            path: '/orderDetail',
+            name: 'orderDetail',
+            meta: { title: '订单详情' },
+            component: () => import('./views/orderManage/orderDetail.vue')
         }
     ]
 })
