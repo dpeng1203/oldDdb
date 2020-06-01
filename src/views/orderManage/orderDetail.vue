@@ -9,9 +9,9 @@
             </div>
         </div>
         <div class="cont" >
-            <img :src="item.productInfo.pMainPic" alt />
+            <img :src="productInfo.pMainPic" alt />
             <div class="info">
-                <div class="title">{{item.productInfo.pName}}</div>
+                <div class="title">{{productInfo.pName}}</div>
                 <div class="desc">{{item.desc}}</div>
                 <div class="pro-price">
                 <!-- <span class="ori-price">￥{{item.pPrice2}}</span> -->
@@ -99,6 +99,7 @@ export default {
             pCount: '',
             price: '',
             item: {},
+            productInfo: {},
             value1: 1,
             option1: [
                 { text: '常用快递', value: 1 },
@@ -116,15 +117,6 @@ export default {
     methods: {
         onClickScan() {
             this.scan()
-            // let parms = {
-            //     priceType: 0,
-            //     pbCode: this.pbCode
-            // }
-            // this.$api.mall.orderPay(parms).then(res => {
-            //     if(res.resultCode ===1) {
-            //         window.location.href = res.msg
-            //     }
-            // })
         },
         onClickSend() {
             if(this.value2 == -1) {
@@ -136,10 +128,11 @@ export default {
                 return
             }
             let parms = {
-                edSend: thsi.value2,
+                edCode: this.value2,
                 daExCode: this.code,
                 pbCode: this.item.pbCode
             }
+            console.log(parms)
             app.edSend(parms).then(res => {
                 Toast('已录快递单号，请尽快发货！')
             })
@@ -221,6 +214,7 @@ export default {
     },
     mounted() {
         this.item = this.$route.query.item
+        this.productInfo = this.item.productInfo
         // this.status = this.$route.query.status
         // this.getDetail(this.pbCode)
         this.scanStart()

@@ -109,7 +109,7 @@ export default {
                 { imgSrc: promIcon, title: '授权码', to: { name: 'sendProm' }, show: this.isInArray([1], this.member.aType) },
                 { imgSrc: rechargeMoney, title: '充值', to: { name: 'recharge' }, show: this.isInArray([1], this.member.roleType) },
                 { imgSrc: setting, title: '设置', to: { name: 'setting' }, show: this.isInArray([1, 2, 3, 4,5], this.member.aType) },
-                { imgSrc: orderManage, title: '订单管理', to: { name: 'orderManage' }, show: this.isInArray([1, 2, 3, 4,5], this.member.aType) }
+                { imgSrc: orderManage, title: '订单管理', to: { name: 'orderManage' }, show: this.isInArray([1], this.member.aType) }
             ]
         },
         fileMsgListCom() {
