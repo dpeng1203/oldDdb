@@ -137,6 +137,10 @@ export default {
         // }
     },
     mounted() {
+        if(this.$route.query.active == 1) {
+            this.active = 1
+            this.parms.prdStatus = 1
+        }
         // let prdStatus = this.$route.query.id
         // this.parms.prdStatus = prdStatus
         // this.getList()

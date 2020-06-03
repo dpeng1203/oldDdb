@@ -85,7 +85,7 @@
                     @click="show=true"
                 >
                 </van-field>
-                <template v-if="recACode != 0">
+                <template v-if="recACode != 0 && reAType != 1">
                     <van-field
                         :border="false"
                         v-model="regType"
@@ -168,6 +168,7 @@ export default {
             checked: false,
             contractShow: false,
             recACode: 0,
+            reAType: 0,
             radio: '6'
         }
     },
@@ -255,6 +256,10 @@ export default {
         next(vm => {
             vm.recACode = to.query.recACode || 0
             console.log(vm.recACode)
+            vm.reAType = to.query.reAType || 0
+            if(vm.reAType == 1) {
+                this.radio = 99
+            }
         })
     }
 }

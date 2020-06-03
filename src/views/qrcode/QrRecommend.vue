@@ -67,14 +67,15 @@ export default {
                 }
             })
         } else {
-            if (reAType < 2) {
-                next(vm => {
-                    vm.text = '需先注册或者扫区代及以下角色噢'
-                })
-            } else {
-                console.log(111)
-                next({ name: 'register', query: { recACode } })
-            }
+            next({ name: 'register', query: { recACode, reAType} })
+            // if (reAType < 2) {
+            //     next(vm => {
+            //         vm.text = '需先注册或者扫区代及以下角色噢'
+            //     })
+            // } else {
+            //     console.log(111)
+            //     next({ name: 'register', query: { recACode, reAType} })
+            // }
         }
     }
 }

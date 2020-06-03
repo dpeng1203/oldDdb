@@ -135,6 +135,7 @@ export default {
             console.log(parms)
             app.edSend(parms).then(res => {
                 Toast('已录快递单号，请尽快发货！')
+                this.$router.push({path: '/orderManage',query: {active: 1}})
             })
         },
         scanStart() {

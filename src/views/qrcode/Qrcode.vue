@@ -37,7 +37,7 @@ export default {
     created() {
         this.qrText = 'http://xry.dodohz.com/ddbxry/index.html#/user/qrRecommend?aCode=' +
             JSON.parse(window.localStorage.user).aCode + '&aType=' + JSON.parse(window.localStorage.user).aType
-            // alert(this.qrText)
+            console.log(this.qrText)
     }
 }
 </script>
