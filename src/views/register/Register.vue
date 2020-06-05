@@ -85,7 +85,7 @@
                     @click="show=true"
                 >
                 </van-field>
-                <template v-if="recACode != 0 && reAType != 1">
+                <template v-if="recACode != 0 ">
                     <van-field
                         :border="false"
                         v-model="regType"
@@ -99,13 +99,16 @@
                         <van-radio-group v-model="radio">
                             <van-radio-group v-model="radio">
                                 <van-cell-group>
-                                    <van-cell title="全国" clickable @click="radio = '3'">
+                                    <van-cell title="全国" clickable @click="radio = '3'" v-if="reAType != 1">
                                         <van-radio slot="right-icon" name="3" checked-color="#3FC7C7"/>
                                     </van-cell>
-                                    <van-cell title="联合" clickable @click="radio = '4'">
+                                    <van-cell title="联合" clickable @click="radio = '4'" v-if="reAType != 1">
                                         <van-radio slot="right-icon" name="4" checked-color="#3FC7C7"/>
                                     </van-cell>
-                                    <van-cell title="商家" clickable @click="radio = '5'">
+                                    <van-cell title="商家" clickable @click="radio = '5'" v-if="reAType != 1">
+                                        <van-radio slot="right-icon" name="5" checked-color="#3FC7C7"/>
+                                    </van-cell>
+                                    <van-cell title="供应商" clickable @click="radio = '99'">
                                         <van-radio slot="right-icon" name="5" checked-color="#3FC7C7"/>
                                     </van-cell>
                                 </van-cell-group>
@@ -187,7 +190,7 @@ export default {
                     return
                 }
             }else{
-                if(this.radio != 3 && this.radio != 4 && this.radio != 5) {
+                if(this.radio != 3 && this.radio != 4 && this.radio != 5 && this.radio != 99) {
                     Toast('选择注册类型！')
                     return
                 }
@@ -221,11 +224,13 @@ export default {
                 // Toast.success('注册成功') // .then(() => this.$router.replace({ name: 'login' }))
                 // this.$router.replace({ name: 'login' }
                 // }
-                Dialog.alert({
-                    message: '注册成功'
-                }).then(() => {
-                    this.$router.replace({ name: 'login' })
-                })
+                Toast.success('注册成功') 
+                this.$router.replace({ name: 'login' })
+                // Dialog.alert({
+                //     message: '注册成功'
+                // }).then(() => {
+                //     this.$router.replace({ name: 'login' })
+                // })
             }).catch(err => Toast.fail(err.msg))
         },
         toFindPwd () {
@@ -257,9 +262,6 @@ export default {
             vm.recACode = to.query.recACode || 0
             console.log(vm.recACode)
             vm.reAType = to.query.reAType || 0
-            if(vm.reAType == 1) {
-                this.radio = 99
-            }
         })
     }
 }

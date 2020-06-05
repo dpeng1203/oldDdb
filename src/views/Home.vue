@@ -109,13 +109,13 @@ export default {
                 { imgSrc: promIcon, title: '授权码', to: { name: 'sendProm' }, show: this.isInArray([1], this.member.aType) },
                 { imgSrc: rechargeMoney, title: '充值', to: { name: 'recharge' }, show: this.isInArray([1], this.member.roleType) },
                 { imgSrc: setting, title: '设置', to: { name: 'setting' }, show: this.isInArray([1, 2, 3, 4,5], this.member.aType) },
-                { imgSrc: orderManage, title: '订单管理', to: { name: 'orderManage' }, show: this.isInArray([1], this.member.aType) }
+                { imgSrc: orderManage, title: '订单管理', to: { name: 'orderManage' }, show: this.isInArray([1, 99], this.member.aType) }
             ]
         },
         fileMsgListCom() {
-          return this.menuList.filter(item => {
-            return item.show;
-          });
+            return this.menuList.filter(item => {
+                return item.show;
+            });
         },
         role () {
             let type = this.member.aType
@@ -130,6 +130,8 @@ export default {
                 text = '联合运营商' // '商户'
             } else if (type === 5) {
                 text = '商家' // '商户'
+            } else if (type === 99) {
+                text = '供应商' // '商户'
             }
             return text
         }
@@ -153,11 +155,11 @@ export default {
         },
         //授权
         accredit() {
-          let url = window.location.href.split('#')[0]
-          fetchPost('/zqxry/agentAuthorization', {url}).then(res => {
-            console.log(res)
-              window.location.href = res
-          })
+            let url = window.location.href.split('#')[0]
+            fetchPost('/zqxry/agentAuthorization', {url}).then(res => {
+                console.log(res)
+                window.location.href = res
+            })
         },
     },
     // beforeRouteEnter (to, from, next) {
@@ -216,19 +218,19 @@ export default {
     //     })
     // },
     mounted() {
-      let url = window.location.href.split('#')[0]
+        let url = window.location.href.split('#')[0]
         let code
         if(url.indexOf('code') > -1) {
-          let search = url.split('?')[1]
-          let keyVal = search.split('#')[0]
-          let arr = keyVal.split('&')
-          arr.forEach(ele => {
-            if(ele.indexOf('code') > -1) {
-              code = ele.split('=')[1]
-            }
-          })
+            let search = url.split('?')[1]
+            let keyVal = search.split('#')[0]
+            let arr = keyVal.split('&')
+            arr.forEach(ele => {
+                if(ele.indexOf('code') > -1) {
+                    code = ele.split('=')[1]
+                }
+            })
         }else{
-          this.accredit()
+            this.accredit()
         }
         let params = {
             opType: 201,
@@ -247,7 +249,7 @@ export default {
                 Dialog.alert({
                     message: err.msg
                 }).then(() => {
-                  this.$router.push({ name: 'login' })
+                    this.$router.push({ name: 'login' })
                     // next({ name: 'login' })
                 })
             } else {

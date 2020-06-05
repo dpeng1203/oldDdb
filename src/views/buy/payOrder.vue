@@ -85,7 +85,11 @@ export default {
             this.time = currentdate
         },
         getUrl () {
-            app.getQrUrl({ barcode: this.orderNum }).then(res => {
+            // app.getQrUrl({ barcode: this.orderNum }).then(res => {
+            //     console.log(res)
+            //     this.appSrc = res.msg
+            // })
+            app.getQrRandUrl({ barcode: this.orderNum }).then(res => {
                 console.log(res)
                 this.appSrc = res.msg
             })

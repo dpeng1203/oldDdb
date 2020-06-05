@@ -341,6 +341,14 @@ export default {
         return fetchGet(url, params)
     },
     /**
+     * 获取支付动态二维码连接
+     */
+    getQrRandUrl ({ barcode } = {}) {
+        let url = '/zqxry/randPay'
+        let params = { barcode }
+        return fetchGet(url, params)
+    },
+    /**
      * 给用户充值
      */
     recharge ({ memCode,price } = {}) {
