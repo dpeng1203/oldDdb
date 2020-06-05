@@ -344,7 +344,7 @@ export default {
      * 获取支付动态二维码连接
      */
     getQrRandUrl ({ barcode } = {}) {
-        let url = '/zqxry/randPay'
+        let url = '/zqxry/payRandMachine'
         let params = { barcode }
         return fetchGet(url, params)
     },

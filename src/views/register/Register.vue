@@ -108,7 +108,7 @@
                                     <van-cell title="商家" clickable @click="radio = '5'" v-if="reAType != 1">
                                         <van-radio slot="right-icon" name="5" checked-color="#3FC7C7"/>
                                     </van-cell>
-                                    <van-cell title="供应商" clickable @click="radio = '99'">
+                                    <van-cell title="供应商" clickable @click="radio = '99'" v-if="reAType == 1">
                                         <van-radio slot="right-icon" name="5" checked-color="#3FC7C7"/>
                                     </van-cell>
                                 </van-cell-group>

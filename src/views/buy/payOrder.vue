@@ -90,8 +90,10 @@ export default {
             //     this.appSrc = res.msg
             // })
             app.getQrRandUrl({ barcode: this.orderNum }).then(res => {
-                console.log(res)
-                this.appSrc = res.msg
+                console.log(res.msg)
+                let msg = JSON.parse(res.msg)
+                console.log(msg)
+                this.appSrc = msg.data.qraddress
             })
         }
 
