@@ -117,21 +117,23 @@ export default {
         getBonusList () {
             app.getBonusList(this.params).then(res => {
                 console.log(res)
-                res.data.forEach(element => {
-                    if(element.bBonus > 100) {
-                        element.bounsTypeName = '辅机补贴'
-                    }else{
-                        element.bounsTypeName = `收益补贴 (机器编号：${element.macId})`
-                    }
-                });
-                this.list.push(...res.data)
+                if(res.data && res.data.length > 0) {
+                    res.data.forEach(element => {
+                        if(element.bBonus > 100) {
+                            element.bounsTypeName = '辅机补贴'
+                        }else{
+                            element.bounsTypeName = `收益补贴 (机器编号：${element.macId})`
+                        }
+                    });
+                    this.list.push(...res.data)
+                }
                 app.getBonusMoneySum(this.params).then(rest => {
-                    console.log(rest)
-                    this.totalMoney = typeof rest === 'number' ? rest : 0
+                    console.log(rest.data)
+                    this.totalMoney = typeof rest.data === 'number' ? rest.data : 0
                 })
                 // 加载状态结束
                 this.loading = false
-                if (res.data.length < this.params.pageSize) {
+                if ( res.data.length < this.params.pageSize) {
                     this.finished = true
                 }
                 this.params.pageNum += 1

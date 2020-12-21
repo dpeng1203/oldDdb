@@ -2,19 +2,19 @@
     <div class="home">
        <div class="home-top">
            <div class="top">
-                <p>{{memberInfo.sumAmount? memberInfo.sumAmount : 0}}</p>
+                <p>{{sumAmount}}</p>
                 <p>总计收益（元）</p>
         </div>
        </div>
        <div class="p-top">
             <div class="left">
                <p>康美仪收益</p>
-                <p class="income-money">{{memberInfo.lastDayAmount? memberInfo.lastDayAmount : 0}}<span> 元</span></p>
+                <p class="income-money">{{kmSumAmount}}<span> 元</span></p>
               
             </div>
             <div class="right">
               <p>养生仪收益</p>
-                <p class="income-money">{{memberInfo.lastMonthAmount? memberInfo.lastMonthAmount : 0}}<span> 元</span></p>
+                <p class="income-money">{{ysSumAmount}}<span> 元</span></p>
             </div>
           </div>
 
@@ -41,7 +41,10 @@ export default {
     data () {
         return {
             memberInfo: '',
-            member: ''
+            member: '',
+            kmSumAmount: 0,
+            ysSumAmount: 0,
+            sumAmount: 0
         }
     },
     methods: {
@@ -60,6 +63,9 @@ export default {
             // console.log(res)
             next(vm => {
                 vm.memberInfo = res
+                vm.kmSumAmount = res.km.sumAmount || 0
+                vm.ysSumAmount = res.ys.sumAmount || 0
+                vm.sumAmount = vm.kmSumAmount +  vm.ysSumAmount
                 vm.member = res.member
                 window.localStorage.user = JSON.stringify(res.member)
             })

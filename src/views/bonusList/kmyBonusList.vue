@@ -11,9 +11,9 @@
                 </div>
             </div>
             <div class="flex-center search-text" style="margin-top:10px">
-                <div class="search-text-content">
+                <!-- <div class="search-text-content">
                     <input type="text" v-model="params.macId" placeholder="请输入设备编号">
-                </div>
+                </div> -->
                 <button @click="search">搜索</button>
             </div>
             <div class="money-text" style="">
@@ -118,17 +118,13 @@ export default {
             app.getKmyBonusList(this.params).then(res => {
                 console.log(res)
                 res.data.forEach(element => {
-                    if(element.bBonus > 100) {
-                        element.bounsTypeName = '辅机补贴'
-                    }else{
-                        element.bounsTypeName = `收益补贴 (机器编号：${element.macId})`
-                    }
+                     element.bounsTypeName = '销售佣金'
                 });
                 this.list.push(...res.data)
                 console.log(this.params)
                 app.getKmyBonusMoneySum(this.params).then(rest => {
-                    console.log(rest)
-                    this.totalMoney = typeof rest === 'number' ? rest : 0
+                    console.log(rest.data)
+                    this.totalMoney = typeof rest.data === 'number' ? rest.data : 0
                 })
                 // 加载状态结束
                 this.loading = false
