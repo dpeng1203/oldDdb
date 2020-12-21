@@ -124,6 +124,48 @@ export default {
         }
         return fetchPost(url, data)
     },
+
+    // 收益列表
+    // eslint-disable-next-line camelcase
+    getKmyBonusList ({ startTime, endTime, macId, pageNum, pageSize }) {
+        let url = '/zqxry/bizqry/service'
+        if (!macId) {
+            macId = 0
+        }
+        startTime = startTime + ' 00:00:00'
+        endTime = endTime + ' 23:59:59'
+        const data = {
+            opType: 244,
+            xry_token_id: window.localStorage.agentToken,
+            startTime,
+            endTime,
+            macId,
+            pageNum,
+            pageSize
+        }
+        return fetchPost(url, data)
+    },
+    // 相应条件下的总收益
+    // eslint-disable-next-line camelcase
+    getKmyBonusMoneySum ({ startTime, endTime, macId, pageNum, pageSize }) {
+        let url = '/zqxry/bizqry/service'
+        if (!macId) {
+            macId = 0
+        }
+        startTime = startTime + ' 00:00:00'
+        endTime = endTime + ' 23:59:59'
+        const data = {
+            opType: 245,
+            xry_token_id: window.localStorage.agentToken,
+            startTime,
+            endTime,
+            macId,
+            pageNum,
+            pageSize
+        }
+        return fetchPost(url, data)
+    },
+
     // 提现
     // eslint-disable-next-line camelcase
     takeCash ({ takeAmount, opType = 104, xry_token_id = window.localStorage.agentToken } = {}) {

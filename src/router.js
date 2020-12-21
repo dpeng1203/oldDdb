@@ -164,8 +164,14 @@ export default new Router({
         {
             path: '/user/bonusList',
             name: 'bonusList',
-            meta: { title: '收益明细' },
+            meta: { title: '养生仪收益明细' },
             component: () => import('./views/bonusList/bonusList.vue')
+        },
+        {
+            path: '/user/kmyBonusList',
+            name: 'kmyBonusList',
+            meta: { title: '康美仪收益明细' },
+            component: () => import('./views/bonusList/kmyBonusList.vue')
         },
         {
             path: '/user/production',

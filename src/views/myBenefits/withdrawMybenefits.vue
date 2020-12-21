@@ -8,12 +8,12 @@
        </div>
        <div class="p-top">
             <div class="left">
-               <p>昨日收益</p>
+               <p>康美仪收益</p>
                 <p class="income-money">{{memberInfo.lastDayAmount? memberInfo.lastDayAmount : 0}}<span> 元</span></p>
               
             </div>
             <div class="right">
-              <p>本月收益</p>
+              <p>养生仪收益</p>
                 <p class="income-money">{{memberInfo.lastMonthAmount? memberInfo.lastMonthAmount : 0}}<span> 元</span></p>
             </div>
           </div>
@@ -28,7 +28,8 @@
                 <p class="income-money">{{memberInfo.lastMonthAmount? memberInfo.lastMonthAmount : 0}}<span>元</span></p>
             </div>
         </div> -->
-       <van-button class="benefitsBtn" type="primary" size="large" @click="turnTo('bonusList')">收益明细</van-button>
+       <van-button class="benefitsBtn" type="primary" size="large" @click="turnTo('kmyBonusList')">康美仪收益明细</van-button>
+       <van-button class="benefitsBtn benefitsBtn2" type="primary" size="large" @click="turnTo('bonusList')">养生仪收益明细</van-button>
     </div>
 </template>
 
@@ -158,6 +159,9 @@ export default {
   background: #46BDAE;
   border-radius:90*@s;
   border: #FFFFFF;
+}
+.benefitsBtn2{
+    top: 750*@s;
 }
 .income{
         text-align: center;
