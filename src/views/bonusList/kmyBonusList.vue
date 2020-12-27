@@ -81,7 +81,7 @@ export default {
             params: {
                 pageNum: 1,
                 pageSize: 10,
-                opType: 204,
+                opType: 244,
                 macId: '',
                 startTime: '',
                 endTime: ''
@@ -123,8 +123,8 @@ export default {
                 this.list.push(...res.data)
                 console.log(this.params)
                 app.getKmyBonusMoneySum(this.params).then(rest => {
-                    console.log(rest.data)
-                    this.totalMoney = typeof rest.data === 'number' ? rest.data : 0
+                    console.log(rest)
+                    this.totalMoney = typeof rest === 'number' ? rest : 0
                 })
                 // 加载状态结束
                 this.loading = false

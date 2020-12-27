@@ -128,8 +128,8 @@ export default {
                     this.list.push(...res.data)
                 }
                 app.getBonusMoneySum(this.params).then(rest => {
-                    console.log(rest.data)
-                    this.totalMoney = typeof rest.data === 'number' ? rest.data : 0
+                    console.log(rest)
+                    this.totalMoney = typeof rest === 'number' ? rest : 0
                 })
                 // 加载状态结束
                 this.loading = false

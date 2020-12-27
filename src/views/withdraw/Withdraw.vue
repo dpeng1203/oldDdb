@@ -19,6 +19,7 @@
             <img src="../../assets/img/edit.png" alt="" @click="show = true">
         </div>
         <div class="btn" @click="submit">立即提现</div>
+        <div class="tip">注：提现时，需收取3%的手续费</div>
         <van-dialog
             v-model="show"
             title="提现账号"
@@ -238,6 +239,12 @@ export default {
         text-align: center;
         font-size: 28*@s;
         color: #fff;
+    }
+    .tip{
+        margin-top: .3rem;
+        font-size: .42rem;
+        font-weight: bold;
+        color: #999;
     }
     // background: #fff;
     // height: 100%;
